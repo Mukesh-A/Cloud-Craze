@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="https://cdn.jsdelivr.net/npm/handlebars@4.7.8/dist/handlebars.min.js"></script>
+   
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="elements">All elements of array</h1>
+    <h1 id="elements2">All elements of array</h1>
+    <h1 id="elements3">All elements of array</h1>
+    <h1 id="elements4">All elements of array4</h1>
+    <h1 id="elements5">All elements of array5</h1>
+    <h1 id="elements6">All elements of array6</h1>
+</body>
+<script>
+    
+    const arr = [10,20,30,40];
+    /* function iseven(element){
+        return element % 2 == 0;
+    } */
+
+   /* arr.forEach(function filterNumbers(ele){
+        document.getElementById('elements').innerHTML  += ele + '</br>';
+    }) */
+
+    
+
+    function ismap(ele){
+        return ele*2;
+    }
+    document.getElementById('elements').innerHTML  += arr.map(ismap);
+    document.getElementById('elements2').innerHTML  += Date.now();
+    const date = new Date();
+    document.getElementById('elements3').innerHTML  += date.toJSON();
+
+    // display object in the with key and value
+    const output = document.getElementById('elements4');
+    const employee = {
+        name:'Ram',
+        class: 'A',
+        Salary: 1234
+    }
+    const employeeList = Object.entries(employee);
+   
+
+    for(let pair of employeeList){
+
+        output.innerHTML += pair;
+    }
+
+    // display only the value form the obj
+    document.getElementById('elements5').innerText += Object.values(employee);
+
+
+    //ASYNC AND PROMISE
+
+    async function printMessage(){
+        let getData = new Promise (function (res,rej){
+            setTimeout(()=> {
+                res('Promise');
+        },1000);
+    });
+    document.getElementById("elements6").innerHTML = await getData;
+
+    }
+    printMessage();
+
+
+
+</script>
+    <h1>hello</h1>
+    <div id="main-container"></div>
+<script id="Test-example" type="text/x-handlebars-template">
+    <div id="card">
+        <p>{{name}}</p>
+        <p>{{price}}</p>
+    </div>
+</script>
+<script>
+    const product = {
+    name: "Laptop",
+    price: 45000
+};
+    const source = document.getElementById('Test-example').innerHTML;
+    const template = Handlebars.compile(source);
+    const html = template(product);
+    document.getElementById('main-container').innerHTML = html;
+</script>
+</html>

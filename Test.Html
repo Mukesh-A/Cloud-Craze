@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@4.7.8/dist/handlebars.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+     <h1>Product Details</h1>
+    <div id = 'product-container'></div>
+    <script id="product-template" type="text/x-handlebars-template">
+    {{#each products}}
+        <div class="product-card">
+
+            <h2>{{productName}}</h2>
+
+            <p>{{description}}</p>
+
+            <h3>Price: ₹{{price}}</h3>
+
+        </div>
+        {{/each}}
+
+</script>
+<script>
+    const products = [
+    {
+        productName: "Wireless Mouse",
+        price: 799
+    },
+    {
+        productName: "Mechanical Keyboard",
+        price: 1499
+    },
+    {
+        productName: "USB Headset",
+        price: 999
+    }
+];
+
+    const source = document.getElementById("product-template").innerHTML;
+    const template = Handlebars.compile(source);
+    const html = template({products});
+    document.getElementById("product-container").innerHTML = html;
+</script>
+</body>
+</html>
