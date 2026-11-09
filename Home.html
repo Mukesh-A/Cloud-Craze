@@ -74,15 +74,20 @@
     <h1>hello</h1>
     <div id="main-container"></div>
 <script id="Test-example" type="text/x-handlebars-template">
+    {{#if available}}
     <div id="card">
         <p>{{name}}</p>
         <p>{{price}}</p>
     </div>
+    {{else}}
+    <p>No more Product</p>
+    {{/if}}
 </script>
 <script>
     const product = {
     name: "Laptop",
-    price: 45000
+    price: 45000,
+    available : true
 };
     const source = document.getElementById('Test-example').innerHTML;
     const template = Handlebars.compile(source);

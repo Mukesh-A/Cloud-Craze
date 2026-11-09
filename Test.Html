@@ -11,6 +11,7 @@
     <div id = 'product-container'></div>
     <script id="product-template" type="text/x-handlebars-template">
     {{#each products}}
+     {{#if available}}
         <div class="product-card">
 
             <h2>{{productName}}</h2>
@@ -20,6 +21,11 @@
             <h3>Price: ₹{{price}}</h3>
 
         </div>
+        
+    {{/if}}
+
+     {{else}}
+    <p>No more Product</p>
         {{/each}}
 
 </script>
@@ -27,15 +33,18 @@
     const products = [
     {
         productName: "Wireless Mouse",
-        price: 799
+        price: 799,
+        available : true
     },
     {
         productName: "Mechanical Keyboard",
-        price: 1499
+        price: 1499,
+         available : false
     },
     {
         productName: "USB Headset",
-        price: 999
+        price: 999,
+         available : true
     }
 ];
 
