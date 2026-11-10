@@ -3,10 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    Hello wolrd
+
+    <header class="store-header">
+        <div class="header-content">
+            <div class="store-title">
+                <h1>Shopping Cart</h1>
+                <p>Review your selected products</p>
+            </div>
+
+            <button  id="back-to-store">
+                ← Continue Shopping
+            </button>
+        </div>
+    </header>
+
+    <main class="store-container">
+        <h2>Your Cart Items</h2>
+
+        <div id="cart-container"></div>
+
+        <div id="cart-total"></div>
+        <div class="order-summary">
+            <h2>Order Summary</h2>
+
+            <p>Total Items: <span id="total-items">0</span></p>
+
+            <p>Total Amount: ₹<span id="order-total">0</span></p>
+
+            <button id="checkout-button">
+                Proceed to Checkout
+            </button>
+        </div>
+    </main>
+
     
+
+<script id="cart-template" type="text/x-handlebars-template">
+    {{#each products}}
+        <div class="cart-item">
+
+            <div class="cart-product-info">
+                <div class="cart-product-image">🛍️</div>
+
+                <div>
+                    <h3>{{name}}</h3>
+                    <p>Price: ₹{{price}}</p>
+                </div>
+            </div>
+
+            <div class="cart-item-details">
+
+                <div class="quantity-controls">
+                    <button class="decrease-qty" data-product-id="{{id}}">−</button>
+
+                    <span>{{quantity}}</span>
+
+                    <button class="increase-qty" data-product-id="{{id}}">+</button>
+                </div>
+
+                <p class="cart-subtotal">₹{{subtotal}}</p>
+
+                <button class="remove-product" data-product-id="{{id}}">
+                    Remove
+                </button>
+
+            </div>
+        </div>
+    {{else}}
+        <p class="empty-cart">Your cart is empty.</p>
+    {{/each}}
+</script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@4.7.8/dist/handlebars.min.js"></script>
+    <script src="carts.js"></script>
+
 </body>
 </html>
