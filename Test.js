@@ -3,6 +3,24 @@
 // const phara = document.querySelectorAll('.message');
 // phara.forEach(function (p){console.log(p.textContent)})
 
+//event bubbling
+ const containers = document.getElementById('container');
+
+// containers.addEventListener('click',function(event){
+//     console.log('target',event.target);
+//     console.log('target',event.currentTarget);
+    
+// })
+
+//event delegate
+containers.addEventListener('click',function(event){
+    const button = event.target.closest('add-cart');
+
+    if(button && containers.contains(button)){
+        console.log("add to cart");
+        
+    }
+})
 
 
 const container = document.getElementById('product-container');
