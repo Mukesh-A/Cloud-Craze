@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="store-header">
+        <h1>My Product Store</h1>
+        <p>Explore our latest products</p>
+    </header>
+    <main class="store-container">
+        <h2>Featured Products</h2>
+        <p id="loading" class="loading">
+            Loading Products....
+        </p>
+        <div class="product-grid" id="product-container"></div>
+    </main>
+
+    <script id="product-template" type="text/x-handelbars-template">
+
+        {{#each products}}
+        <div class="product-card">
+            <div class="product-image">
+                <span>🛍️</span>
+            </div>
+
+            <div class="product-info">
+                <h3>{{name}}</h3>
+
+                <p class="product-price">₹{{price}}</p>
+
+                <button class="add-cart" data-id="{{id}}" data-name="{{name}}">Add to cart</buttton>
+            </div>
+        </div>
+
+        {{/each}}
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@4.7.8/dist/handlebars.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
