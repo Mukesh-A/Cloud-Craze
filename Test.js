@@ -35,3 +35,72 @@ button.addEventListener('click', function(){
     container.append(product);
     console.log("clicked");
 })
+
+
+//ASYSNC
+function getProduct(callback){
+    console.log("Fetching products");
+    setTimeout(function(){
+        const products = ["Laptop", "Mouse", "Keyboard"];
+        callback(products);
+    },2000);
+}
+
+function displayProduct(prod){
+    console.log("Products received");
+
+    console.log(prod);
+}
+getProduct(displayProduct);
+
+
+// const productPromise = new Promise(function(resolve, reject) {
+
+//     setTimeout(function() {
+
+//         const products = ["Laptop", "Mouse", "Keyboardsssssss"];
+
+//         resolve(products);
+
+//     }, 2000);
+
+// });
+
+// productPromise.then(function(product){
+//     console.log(product);
+    
+// })
+
+const productPromise = new Promise(function(resolve, reject) {
+        const success = true;
+
+        if (success) {
+            resolve(["Laptop", "Mouse"]);
+        } else {
+            reject("Unable to fetch products");
+        }
+
+});
+
+// productPromise
+//     .then(function(products) {
+//         console.log(products);
+//     })
+//     .catch(function(error) {
+//         console.log(error);
+//     });
+
+
+async function displaProduct(){
+
+    try {  
+        const products = await productPromise;
+        console.log(products);
+    } catch (error) {
+        console.log(error);
+        
+    }
+    
+}
+
+displaProduct();
