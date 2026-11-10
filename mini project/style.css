@@ -13,7 +13,6 @@ body{
 .store-header{
     background-color: #0176d3;
     color: white;
-    text-align: center;
     padding: 30px 20px;
 }
 
@@ -28,6 +27,28 @@ body{
 }
 .store-container h2{
     margin-bottom: 20px;
+}
+.header-content {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+#view-cart {
+    padding: 12px 20px;
+    background-color: white;
+    color: #0176d3;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#view-cart:hover {
+    background-color: #eaf3fc;
 }
 .loading{
     text-align: center;

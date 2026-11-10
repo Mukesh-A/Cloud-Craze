@@ -8,8 +8,15 @@
 </head>
 <body>
     <header class="store-header">
-        <h1>My Product Store</h1>
-        <p>Explore our latest products</p>
+        <div class="header-content">
+            <div class="store-title">
+                <h1>My Product Store</h1>
+                <p>Smart shopping starts here.</p>
+            </div>
+            <button id="view-cart">
+                🛒 Cart (<span id="cart-count">0</span>)
+            </button>
+    </div>
     </header>
     <main class="store-container">
         <h2>Featured Products</h2>
@@ -32,7 +39,7 @@
 
                 <p class="product-price">₹{{price}}</p>
 
-                <button class="add-cart" data-id="{{id}}" data-name="{{name}}">Add to cart</buttton>
+                <button class="add-cart" data-id="{{id}}">Add to cart</buttton>
             </div>
         </div>
 

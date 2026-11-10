@@ -1,8 +1,16 @@
 const container = document.getElementById('product-container');
 const loading = document.getElementById('loading');
+let products = [];
 const cart = new Map();
 const source = document.getElementById('product-template').innerHTML;
 const template = Handlebars.compile(source);
+
+
+//navigate to carts page
+const viewCartButton = document.getElementById('view-cart');
+viewCartButton.addEventListener('click',function(){
+    window.location.href = 'cart.html'
+})
 
 function fetchProducts(){
     return new Promise(function(resolve,reject){
@@ -21,7 +29,7 @@ function fetchProducts(){
 async function loadProducts(){
     try {
         loading.textContent = 'Fetching the products'
-        const products = await fetchProducts();
+        products = await fetchProducts();
         const html = template({products})
         container.innerHTML = html;
         loading.textContent = '';
@@ -41,20 +49,26 @@ container.addEventListener('click', function(event){
   
     
     if (button && container.contains(button)) {
-        const productName = event.target.dataset.name;
-        const productId = event.target.dataset.id;
-
+        const productId = button.dataset.id;
+        const selectedProduct = products.find(function(product){
+            return String(product.id) === productId;
+        })
+        if(!selectedProduct){
+            return;
+        }
         if(cart.has(productId)){
             const existingProduct = cart.get(productId);
             existingProduct.quantity++;
         }else{
             cart.set(productId, {
-                name : productName,
+                name : selectedProduct.name,
+                price: selectedProduct.price,
                 quantity : 1
             })
         }
         console.log(`${productName} Add to Cart clicked!`);
         console.log(cart);
+        localStorage.setItem('cart', JSON.stringify([...cart]));
         
     }
 
