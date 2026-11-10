@@ -11,7 +11,7 @@
     <div id = 'product-container'></div>
     <script id="product-template" type="text/x-handlebars-template">
     {{#each products}}
-     {{#if available}}
+     {{#if (isAvailable available)}}
         <div class="product-card">
 
             <h2>{{productName}}</h2>
@@ -19,32 +19,52 @@
             <p>{{description}}</p>
 
             <h3>Price: ₹{{price}}</h3>
+            <p>Brand: {{details.brand}}</p>
 
+            <p>Model: {{details.model}}</p>
+
+            <p>Warranty: {{details.warranty}}</p>       
         </div>
-        
     {{/if}}
 
-     {{else}}
-    <p>No more Product</p>
         {{/each}}
 
 </script>
 <script>
+
+    Handlebars.registerHelper('isAvailable', function(available){
+        if (available) {return available};
+    })
     const products = [
     {
-        productName: "Wireless Mouse",
-        price: 799,
-        available : true
-    },
+    productName: "Laptop",
+    price: 45000,
+     available : true,
+    details: {
+        brand: "Dell",
+        model: "Inspiron",
+        warranty: "2 Years"
+    }
+},
     {
         productName: "Mechanical Keyboard",
         price: 1499,
-         available : false
+         available : false,
+          details: {
+        brand: "Dell",
+        model: "Inspiron",
+        warranty: "2 Years"
+    }
     },
     {
         productName: "USB Headset",
         price: 999,
-         available : true
+         available : true,
+          details: {
+        brand: "Dell2",
+        model: "Inspiron3",
+        warranty: "2 Years"
+    }
     }
 ];
 
